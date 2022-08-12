@@ -1,0 +1,664 @@
+html {
+  background-color: white;
+}
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 10px;
+  background-color: #F5F5F5;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #a7a7a7;
+  border: none;
+}
+text {
+  position: absolute;
+  height: 25px;
+  width: 100%;
+  white-space: nowrap;
+}
+.btn {
+  border: none;
+  border-radius: 5px;
+}
+.btn.btn-primary {
+  background-color: #fff!important;
+  color: #616365;
+  border: 1px solid #949494;
+  font-size: 12px;
+  padding: 4px 12px;
+  min-width: 63px;
+}
+.btn.btn-primary:hover {
+  color: #616365!important;
+  background-color: #e6e6e6 !important;
+  border: 1px solid #949494!important;
+  cursor: pointer;
+}
+.btn.btn-primary:active {
+  color: #616365!important;
+  background-color: #fff;
+  border: 1px solid #949494!important;
+}
+.btn.btn-primary:focus {
+  color: #616365!important;
+  background-color: #fff;
+  border: 1px solid #949494!important;
+}
+.btn.btn-secondary {
+  background-color: #007ac9!important;
+  color: #fff;
+  border: 1px solid #007ac9;
+  font-size: 12px;
+  padding: 4px 12px;
+  min-width: 63px;
+  float: right;
+}
+.btn.btn-secondary:hover {
+  color: white!important;
+  background-color: #005b96 !important;
+  border: 1px solid #007ac9;
+  cursor: pointer;
+}
+.btn.btn-secondary:active {
+  color: white!important;
+  background-color: #005b96 !important;
+  border: 1px solid #007ac9;
+}
+.btn.btn-secondary:focus {
+  color: white!important;
+  background-color: #005b96 !important;
+  border: 1px solid #007ac9;
+}
+.btn.connectivity {
+  background-color: transparent;
+  color: #e00034;
+  text-decoration: underline;
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: 3px;
+  outline: none!important;
+  font-family: "Roboto";
+}
+.btn.connectivity:hover {
+  cursor: pointer;
+}
+.btn.connectivity::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: -30px;
+  top: -5px;
+  background-image: url(/assets/img/cnt.png);
+  background-size: cover;
+}
+.btn.connectivity.checked {
+  color: #02901b;
+}
+.btn.connectivity.checked::before {
+  background-image: url(/assets/img/cntc.png);
+}
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: 'Roboto';
+  overflow: hidden;
+}
+.onclick-menu {
+  position: relative;
+  display: inline-block;
+}
+.onclick-menu:focus {
+  /* clicking on label should toggle the menu */
+  pointer-events: none;
+}
+.onclick-menu:focus .onclick-menu-content {
+  /*  opacity is 1 in opened state (see below) */
+  opacity: 1;
+  visibility: visible;
+  /* don't let pointer-events affect descendant elements */
+  pointer-events: auto;
+}
+.onclick-menu-content {
+  position: absolute;
+  z-index: 1;
+  /* use opacity to fake immediate toggle */
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s;
+}
+.graph-component {
+  position: relative;
+  height: 100%;
+}
+.graph-component .top-menu {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  background-color: #bbbcbe!important;
+}
+.graph-component .top-menu::before {
+  content: "";
+  background-color: #007ac9;
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+.graph-component .top-menu .menuContainer {
+  width: 100%;
+  margin-top: 6px;
+}
+.graph-component .top-menu .menuContainer .row .menu {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 1px 6px #505050;
+  z-index: 10;
+  position: relative;
+  background-color: transparent;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item {
+  list-style: none;
+  margin: 0 5px;
+  position: relative;
+  background-color: #bbbcbe!important;
+  color: #363636;
+  outline: none;
+  font-size: 14px;
+  padding: 1px 10px;
+  z-index: 30;
+  height: 27px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item:nth-of-type(1) {
+  margin-left: 5px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item span {
+  margin: auto;
+  position: relative;
+  top: 5px;
+  font-size: 13px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item:hover,
+.graph-component .top-menu .menuContainer .row .menu .menu-item:focus {
+  background-color: #d5d6d7 !important;
+  color: #363636;
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 0px 9px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul {
+  background: #ffffff !important;
+  padding: 0;
+  min-width: 100%;
+  list-style: none;
+  color: #363636;
+  min-height: 30px;
+  min-width: 150px;
+  margin: 0;
+  top: 29px;
+  left: -1px;
+  border: 1px solid gray;
+  z-index: 100;
+  width: max-content;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #b5b5b5;
+  box-shadow: 2px 3px 9px -1px #0000004a 4a;
+  padding-bottom: 2px;
+  padding-top: 3px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 30px;
+  border-right: 1px solid #cecece;
+  z-index: 2;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li {
+  width: auto;
+  height: auto;
+  padding: 2px 2px 2px 25px;
+  margin: 0px 4px ;
+  background: #ffffff !important;
+  font-size: 12px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li.line {
+  height: 1px;
+  background-color: #b5b5b5!important;
+  width:  calc(100% - 31px);
+  padding: 0;
+  left: 25px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li.disabled {
+  opacity: 0.7;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li.disabled.checked::before {
+  display: none;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li:hover {
+  background-color: #c5e8ff!important;
+  border: 1px solid #007ac9;
+  cursor: pointer;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li:hover button {
+  color: black;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li button {
+  background-color: transparent;
+  border: none;
+  font-size: 11px;
+  text-align: left;
+  height: 18px;
+  width: 100%;
+  color: #363636;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li button:hover {
+  cursor: pointer;
+  color: black;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li.checked::before {
+  content: "";
+  background-image: url(/assets/img/check.png);
+  background-size: contain;
+  height: 11px;
+  width: 11px;
+  position: absolute;
+  left: 2px;
+  top: 7px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li span {
+  background-color: transparent;
+  border: none;
+  font-size: 9px !important;
+  text-align: right !important;
+  height: 18px;
+  color: #363636;
+  float: right;
+  top: 2px !important;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item:nth-of-type(4) ul li {
+  position: relative;
+}
+.graph-component .contentContainer {
+  height: calc(100vh - 35px);
+  display: flex;
+}
+.graph-component .contentContainer > button {
+  position: absolute;
+  right: 30px;
+  top: 8px;
+  z-index: 20;
+}
+.graph-component .contentContainer > button.grid-btn {
+  right: 100px;
+}
+.graph-component .contentContainer > button.check-btn {
+  right: 217px;
+}
+.graph-component .contentContainer .graphContainer {
+  touch-action: none;
+  flex: 1;
+  background-color: white !important;
+  width: 100%;
+  height: 100%;
+}
+.graph-component .contentContainer .graphContainer .graphBackground {
+  background-color: white !important;
+  width: 100%;
+  height: 100%;
+  display: block !important;
+  overflow: scroll;
+}
+.graph-component .contentContainer .graphContainer svg {
+  position: absolute;
+  background-color: white !important;
+}
+.graph-component .contentContainer .graphContainer svg:first-child {
+  background-color: white !important;
+}
+.graph-component .contentContainer .sideContainer {
+  width: 0;
+  padding-top: 5px;
+  transition: 0.3s width ease-in-out;
+  overflow: auto;
+  height: calc(100% - 60px);
+  padding-bottom: 10px;
+  position: absolute;
+  right: 10px;
+  background: #ececec;
+}
+.graph-component .contentContainer .sideContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+.graph-component .contentContainer .sideContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #F5F5F5;
+}
+.graph-component .contentContainer .sideContainer::-webkit-scrollbar-thumb {
+  background-color: #a7a7a7;
+  border: none;
+}
+.graph-component .contentContainer .sideContainer div {
+  margin: -5px auto 10px;
+  text-align: center;
+  position: relative;
+  min-height: 60px;
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+}
+.graph-component .contentContainer .sideContainer div:hover {
+  background-color: #ececec;
+}
+.graph-component .contentContainer .sideContainer div#Cooler {
+  margin-top: 5px;
+}
+.graph-component .contentContainer .sideContainer div#Cooler img {
+  width: 38px;
+}
+.graph-component .contentContainer .sideContainer div#Heater img {
+  width: 38px;
+}
+.graph-component .contentContainer .sideContainer div#Heat_Exchanger img {
+  width: 35px;
+}
+.graph-component .contentContainer .sideContainer div#Pump {
+  min-height: 70px ;
+}
+.graph-component .contentContainer .sideContainer div#Pump img {
+  width: 55px;
+}
+.graph-component .contentContainer .sideContainer div#Pump::after {
+  bottom: -3px;
+}
+.graph-component .contentContainer .sideContainer div#Air_Cooler img {
+  width: 50px;
+}
+.graph-component .contentContainer .sideContainer div#Air_Cooler::after {
+  bottom: -10px;
+}
+.graph-component .contentContainer .sideContainer div#Desalter img {
+  width: 80px;
+}
+.graph-component .contentContainer .sideContainer div#Mixer img {
+  width: 49px;
+}
+.graph-component .contentContainer .sideContainer div#Mixer::after {
+  bottom: -10px;
+}
+.graph-component .contentContainer .sideContainer div#Splitter img {
+  width: 49px;
+}
+.graph-component .contentContainer .sideContainer div#Splitter::after {
+  bottom: -10px;
+}
+.graph-component .contentContainer .sideContainer div#Flash img {
+  width: 38px;
+}
+.graph-component .contentContainer .sideContainer div#Flash::after {
+  bottom: -12px;
+}
+.graph-component .contentContainer .sideContainer div#Column img {
+  width: 38px;
+}
+.graph-component .contentContainer .sideContainer div#Accumulator img {
+  width: 90px;
+}
+.graph-component .contentContainer .sideContainer div#Other img {
+  width: 40px;
+}
+.graph-component .contentContainer .sideContainer div#ColumnTop img {
+  width: 55px;
+}
+.graph-component .contentContainer .sideContainer div#KettleReboiler img {
+  width: 60px;
+}
+.graph-component .contentContainer .sideContainer div img {
+  width: 100%;
+  margin: auto;
+  transform: scale(0.9);
+  transition: 0.2s transform;
+}
+.graph-component .contentContainer .sideContainer div img:hover {
+  transform: scale(1);
+  cursor: pointer;
+}
+.graph-component .contentContainer .sideContainer div::after {
+  content: attr(model-name);
+  width: 80%;
+  padding: 0px;
+  background-color: #007ac9;
+  color: white;
+  position: absolute;
+  bottom: -5px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  font-size: 11px;
+  z-index: 5;
+}
+.graph-component .contentContainer .sideContainer.active {
+  width: 120px;
+}
+.form-group {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0px!important;
+}
+.form-group label {
+  flex: 1;
+  margin: 10px 5px;
+  font-size: 12px;
+  font-weight: normal!important;
+}
+.form-group input {
+  width: 250px;
+  height: 24px;
+  margin: 5px;
+  padding: 0 3px;
+  font-size: 11px;
+  border-radius: 0px;
+  box-shadow: none!important;
+}
+.form-group.radio {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-group.radio input {
+  width: 15px!important;
+}
+.form-group.radio label {
+  flex: 1;
+}
+table.mxPopupMenu {
+  background-color: #d5d6d7;
+  margin: 0!important;
+}
+table.mxPopupMenu td.mxPopupMenuIcon {
+  background-color: #d5d6d7;
+  display: none;
+}
+table.mxPopupMenu tr.mxPopupMenuItemHover {
+  background-color: #007ac9;
+  color: white;
+}
+table.mxPopupMenu td {
+  padding: 6px 15px;
+}
+.viewMode .graph-component .graphContainer {
+  height: 100vh;
+}
+.modal.open {
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 2px;
+}
+.modal.open .container {
+  background-color: #fff;
+  position: relative;
+  padding: 10px;
+  border: 1px solid #007ac9;
+  width: auto;
+  box-shadow: 2px 4px 12px 2px #2525258c;
+}
+.modal.open .container div.modal-alert {
+  width: 300px;
+}
+.modal.open .container div.modal-alert .modal-body {
+  flex-direction: column;
+  font-size: 14px;
+}
+.modal.open .container div.modal-alert .modal-body .icon {
+  margin-bottom: 10px;
+}
+.modal.open .container div.modal-alert .modal-body p {
+  text-align: center;
+}
+.modal.open .container div.modal-unit {
+  width: 380px;
+}
+.modal.open .container div.modal-feed {
+  width: 380px;
+}
+.modal.open .container div.modal-alert-message {
+  width: 300px;
+}
+.modal.open .container div.modal-alert-message .modal-body {
+  flex-direction: column;
+}
+.modal.open .container div.modal-alert-message .modal-body p {
+  text-align: center;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 95%;
+  margin: auto;
+  font-size: 13px;
+  color: #363636;
+  margin-bottom: 20px;
+}
+.modal.open .container div.modal-autoname {
+  width: 550px;
+}
+.modal.open .container div.modal-autoname .modal-body {
+  flex-direction: column;
+}
+.modal.open .container div .modal-header {
+  height: 30px;
+  text-align: center;
+  width: 100%!important;
+}
+.modal.open .container div .modal-header h3 {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #616365;
+  font-size: 16px;
+  font-weight: bold;
+}
+.modal.open .container div .modal-header .close-button {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #007ac9;
+  font-size: 24px;
+  font-weight: bold;
+  height: 0;
+}
+.modal.open .container div .modal-body {
+  width: 100%!important;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal.open .container div .modal-body h4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  width: 100%;
+  color: #007ac9;
+}
+.modal.open .container div .modal-body h4::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid lightgray;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+.modal.open .container div .modal-body .row {
+  width: 100%;
+  position: relative;
+  padding-top: 45px;
+  padding-left: 5px;
+}
+.modal.open .container div .modal-body .row .form-group.half {
+  width: calc(50% - 15px);
+  float: left;
+  margin-left: 25px;
+}
+.modal.open .container div .modal-body .row .form-group.half:nth-of-type(odd) {
+  margin-left: 5px;
+}
+.modal.open .container div .modal-body .row .form-group.half input {
+  width: 50%;
+}
+.modal.open .container div .modal-footer {
+  position: relative;
+  margin: 10px 5px;
+}
+.graph-component .top-menu .menuContainer .row .menu .menu-item ul li.checked::before {
+  content: "";
+  background-image: url(/assets/img/check.png);
+  background-size: contain;
+  height: 11px;
+  width: 11px;
+  position: absolute;
+  left: 2px;
+  top: 7px;
+}
+.containerDiv {
+  position: absolute !important;
+  z-index: 9;
+}
+.containerDivHeader {
+  cursor: move !important;
+  z-index: 10;
+}

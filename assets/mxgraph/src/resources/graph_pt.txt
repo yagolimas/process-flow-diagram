@@ -1,0 +1,11 @@
+alreadyConnected=
+containsValidationErrors=
+updatingDocument=
+updatingSelection=
+collapse-expand=
+doubleClickOrientation=
+close=Close
+error=Error
+done=done
+cancel=Cancel
+ok=Ok

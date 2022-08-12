@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nalco - PFD</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/font.css">
+
+    <!--JS-->
+    <script type="text/javascript">
+      mxBasePath = 'assets/mxgraph/src';
+    </script>
+    <script type="text/javascript" src="assets/mxgraph/mxClient.js"></script>
+
+    <script type="text/javascript" src="assets/js/init.js"></script>    
+    
+    <script type="text/javascript" src="assets/js/view/editorui/container.js"></script>
+    <script type="text/javascript" src="assets/js/view/viewui/container.js"></script>
+    <script type="text/javascript" src="assets/js/view/model.js"></script>   
+
+    <script type="text/javascript" src="assets/js/model/Application.js"></script>
+    <script type="text/javascript" src="assets/js/view/base/actreneBase.js"></script>
+    <script type="text/javascript" src="assets/js/view/base/monitorBase.js"></script>
+    <script type="text/javascript" src="assets/js/view/base/graphView.js"></script>
+    <script type="text/javascript" src="assets/js/view/base/graph.js"></script>
+    <script type="text/javascript" src="assets/js/view/base/modal.js"></script>
+
+    <!--DATA -->
+    <script type="text/javascript" src="assets/js/data/data-autoname.js"></script>
+
+    <!--VIEWS-->
+    <script type="text/javascript" src="assets/js/view/editorui/menu.js"></script>
+    <script type="text/javascript" src="assets/js/view/editorui/toolbar.js"></script>
+    <script type="text/javascript" src="assets/js/view/editorui/sidebar.js"></script>    
+
+    <!--MODELS-->    
+    <script type="text/javascript" src="assets/js/model/FeedStream.js"></script>
+    <script type="text/javascript" src="assets/js/model/ProductStream.js"></script>
+    <script type="text/javascript" src="assets/js/model/InternalStream.js"></script>
+    <script type="text/javascript" src="assets/js/model/Empty.js"></script>
+    <script type="text/javascript" src="assets/js/model/Cooler.js"></script>
+    <script type="text/javascript" src="assets/js/model/Heater.js"></script>
+    <script type="text/javascript" src="assets/js/model/Pump.js"></script>
+    <script type="text/javascript" src="assets/js/model/Desalter.js"></script>
+    <script type="text/javascript" src="assets/js/model/AirCooler.js"></script>
+    <script type="text/javascript" src="assets/js/model/Mixer.js"></script>
+    <script type="text/javascript" src="assets/js/model/HeatExchanger.js"></script>
+    <script type="text/javascript" src="assets/js/model/FlashDrum.js"></script>
+    <script type="text/javascript" src="assets/js/model/KettleReboiler.js"></script>
+    <script type="text/javascript" src="assets/js/model/Splitter.js"></script>
+    <script type="text/javascript" src="assets/js/model/Accumulator.js"></script>
+    <script type="text/javascript" src="assets/js/model/Column.js"></script>
+    <script type="text/javascript" src="assets/js/model/Other.js"></script>
+    <script type="text/javascript" src="assets/js/model/ColumnTop.js"></script>
+    <script type="text/javascript" src="assets/js/model/PFDData.js"></script>
+
+    <!--CONTROLLERS-->
+    <script type="text/javascript" src="assets/js/controller/FeedStreamController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/StreamController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/CoolerController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/HeaterController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/PumpController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/DesalterController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/AirCoolerController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/MixerController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/HeatExchangerController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/FlashDrumController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/KettleReboilerController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/SplitterController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/AccumulatorController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/ColumnController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/OtherController.js"></script>
+    <script type="text/javascript" src="assets/js/controller/ColumnTopController.js"></script>
+
+    <!--UTILS-->
+    <script type="text/javascript" src="assets/js/utils/general.js"></script>
+    <script type="text/javascript" src="assets/js/utils/automatic.js"></script>    
+    <script type="text/javascript" src="assets/js/utils/autoname.js"></script>
+    <script type="text/javascript" src="assets/js/utils/align.js"></script>
+    <script type="text/javascript" src="assets/js/utils/centre.js"></script>
+    <script type="text/javascript" src="assets/js/utils/constants.js"></script>
+    <script type="text/javascript" src="assets/js/utils/shape.js"></script>   
+    <script type="text/javascript" src="assets/js/utils/registry.js"></script>
+    <script type="text/javascript" src="assets/js/utils/zoom.js"></script>
+    <script type="text/javascript" src="assets/js/utils/redraw.js"></script>
+    <script type="text/javascript" src="assets/js/utils/rename.js"></script>
+    <script type="text/javascript" src="assets/js/utils/rotate.js"></script>
+    <script type="text/javascript" src="assets/js/utils/restore.js"></script>
+    <script type="text/javascript" src="assets/js/utils/flip.js"></script>
+    <script type="text/javascript" src="assets/js/utils/undo.js"></script>
+    <script type="text/javascript" src="assets/js/utils/jump.js"></script>    
+    <script type="text/javascript" src="assets/js/utils/keep.js"></script>
+    <script type="text/javascript" src="assets/js/utils/visible.js"></script>
+    <script type="text/javascript" src="assets/js/utils/defaultSize.js"></script>
+    <script type="text/javascript" src="assets/js/utils/order.js"></script>
+    <script type="text/javascript" src="assets/js/utils/swap.js"></script>
+
+    <!-- HELPERS --> 
+    <script type="text/javascript" src="assets/js/helpers/validate.js"></script>
+
+    <!-- EXCEPTIONS -->
+    <script type="text/javascript" src="assets/js/exception/WarningException.js"></script>
+    <script type="text/javascript" src="assets/js/exception/NameInUseExcpetion.js"></script>
+    <script type="text/javascript" src="assets/js/exception/DeleteStreamOrUnit.js"></script>
+
+
+  </head>
+
+  <body contentEditable='false'>    
+    <script type="text/javascript">
+      (function () { attachListener(); load(); })();
+    </script>
+
+  </body>
+</html>
